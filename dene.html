@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=10.0">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+   
+    <title>Model Viewer</title>
+    <model-viewer  camera-controls touch-action="pan-y" " id="ferrari" src="ferrari.glb"></model-viewer>
+</head>
+
+
+
+
+
+    <div class='search_container'>
+        <button onclick="myFunction()">Click me</button>
+        <input type='button' value='Başla' onclick='startRecording();'>
+            </div>
+      <div id="ARAMA"></div>
+      <div id="ANLASILAN"></div> 
+      <div id="ANLASILANIN SESI"></div>
+      <img id="myImage"  src="tank1.jpg" width="200" height="180"></div>
+
+      <iframe id="myFrame" src="tank1.jpg"></iframe>
+      <button onclick="myFunction()">Try it</button>
+
+         
+
+
+
+<script >
+
+function startRecording(){ algila.start(); }
+var algila = new webkitSpeechRecognition();{
+algila.onresult = function(event) 
+{ for (var i = event.resultIndex; i < event.results.length; i++) 
+{if (event.results[i].isFinal) { neDedi = event.results[i][0].transcript;} }
+
+
+ document.getElementById("ARAMA").innerHTML="SAIT SISTEM ARAMA YAZILIMI = "+neDedi;
+document.getElementById("ANLASILAN").innerHTML=neDedi +".jpg" ;
+//document.getElementById("ANLASILANIN SESI").innerHTML=neDedi +".wav" ;
+document.getElementById("ANLASILANIN SESI").innerHTML=neDedi +".vbs" ;
+window.speechSynthesis.speak(new SpeechSynthesisUtterance('aradığınız parçanın adı' +neDedi));
+
+var image = document.getElementById("myImage");
+var adres = document.getElementById("ANLASILAN").innerHTML;
+image.src = adres;
+document.getElementById("myFrame").src=adres;
+
+
+}
+
+}
+
+
+</script>
+
+
+
+<script>
+function myFunction() {
+ document.getElementById("ferrari").src="Horse.glb";
+ }
+ </script>
+
+
+
+</body>
+</html>
